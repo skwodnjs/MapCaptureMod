@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "map-capture-mod",
+	"version": "${version}",
+	"name": "Map Capture Mod",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"JWN!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/skwodnjs/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/map-capture-mod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"jwn.mapcapturemod.MapCaptureMod"
+		],
+		"fabric-datagen": [
+			"jwn.mapcapturemod.MapCaptureModDataGenerator"
+		],
+		"client": [
+			"jwn.mapcapturemod.MapCaptureModClient"
+		]
+	},
+	"mixins": [
+		"map-capture-mod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
