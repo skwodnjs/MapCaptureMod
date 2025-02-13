@@ -5,7 +5,7 @@
 	"mixins": [
 		"LightmapTextureManagerMixin",
 		"ClientPlayerEntityMixin",
-		"InGameHubMixin"
+      "InGameHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
