@@ -13,14 +13,8 @@
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/map-capture-mod/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"jwn.mapcapturemod.MapCaptureMod"
-		],
-		"fabric-datagen": [
-			"jwn.mapcapturemod.MapCaptureModDataGenerator"
-		],
 		"client": [
 			"jwn.mapcapturemod.MapCaptureModClient"
 		]
