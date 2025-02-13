@@ -1,6 +1,6 @@
 package jwn.mapcapturemod.mixin;
 
-import jwn.mapcapturemod.access.LightToggleAccess;
+import jwn.mapcapturemod.event.LightToggleAccess;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.world.ClientWorld;

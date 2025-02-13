@@ -1,6 +1,6 @@
 package jwn.mapcapturemod.mixin;
 
-import jwn.mapcapturemod.access.LightToggleAccess;
+import jwn.mapcapturemod.event.LightToggleAccess;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;

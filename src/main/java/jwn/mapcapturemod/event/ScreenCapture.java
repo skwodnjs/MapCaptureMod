@@ -1,10 +1,8 @@
 package jwn.mapcapturemod.event;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import jwn.mapcapturemod.access.LightToggleAccess;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
-import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.text.Text;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
