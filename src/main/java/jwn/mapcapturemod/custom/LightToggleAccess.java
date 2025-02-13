@@ -1,4 +1,4 @@
-package jwn.mapcapturemod.event;
+package jwn.mapcapturemod.custom;
 
 public interface LightToggleAccess {
     boolean isLightToggle();

@@ -1,7 +1,8 @@
 package jwn.mapcapturemod;
 
-import jwn.mapcapturemod.event.KeyInputHandler;
-import jwn.mapcapturemod.event.ModSounds;
+import jwn.mapcapturemod.custom.KeyInputHandler;
+import jwn.mapcapturemod.custom.ModSounds;
+import jwn.mapcapturemod.custom.ScreenCapture;
 import net.fabricmc.api.ClientModInitializer;
 
 public class MapCaptureModClient implements ClientModInitializer {
@@ -10,6 +11,7 @@ public class MapCaptureModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         KeyInputHandler.register();
+        ScreenCapture.register();
         ModSounds.register();
     }
 }
