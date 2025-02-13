@@ -1,4 +1,4 @@
-package jwn.mapcapturemod.custom;
+package jwn.mapcapturemod.mapcapture;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -28,12 +28,16 @@ public class ScreenCapture {
         
         // 전체화면 확인
         if (!client.options.getFullscreen().getValue()) {
-            client.player.sendMessage(Text.literal("It only works normally when it's full screen."), false);
+            client.player.sendMessage(Text.translatable("message.map-capture-mod.full_screen_warning"), false);
             return;
         }
-        
-        // 경고 문구
-        client.player.sendMessage(Text.literal("Please make sure that the width and height of the full screen are entered correctly in the settings."), false);
+
+        // 해상도 확인
+        Framebuffer framebuffer = client.getFramebuffer();
+        if (framebuffer.viewportWidth != 1920 || framebuffer.viewportHeight != 1080) {
+            client.player.sendMessage(Text.translatable("message.map-capture-mod.full_screen_warning"), false);
+            return;
+        }
         
         // 소리
         client.player.setAngles(client.player.getYaw(), 50);
@@ -100,7 +104,7 @@ public class ScreenCapture {
 
         try {
             ImageIO.write(image, "PNG", file);
-            client.player.sendMessage(Text.literal("Screenshot saved!"), false);
+            client.player.sendMessage(Text.translatable("message.map-capture-mod.saved"), false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,6 +114,10 @@ public class ScreenCapture {
 
     public static void setScreenshotDelay(int screenshotDelay) {
         ScreenCapture.screenshotDelay = screenshotDelay;
+    }
+
+    public static int getScreenshotDelay() {
+        return screenshotDelay;
     }
 
     private static void screenshotDelayTick() {

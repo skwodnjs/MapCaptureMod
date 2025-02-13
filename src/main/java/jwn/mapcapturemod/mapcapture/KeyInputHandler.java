@@ -1,15 +1,14 @@
-package jwn.mapcapturemod.custom;
+package jwn.mapcapturemod.mapcapture;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 import static jwn.mapcapturemod.MapCaptureModClient.MOD_ID;
-import static jwn.mapcapturemod.custom.ScreenCapture.mapCapture;
-import static jwn.mapcapturemod.custom.ScreenCapture.setScreenshotDelay;
+import static jwn.mapcapturemod.mapcapture.ScreenCapture.getScreenshotDelay;
+import static jwn.mapcapturemod.mapcapture.ScreenCapture.mapCapture;
 
 
 public class KeyInputHandler {
@@ -21,7 +20,9 @@ public class KeyInputHandler {
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (MapCaptureKey.wasPressed()) {
-                mapCapture();
+                if (getScreenshotDelay() == -1) {
+                    mapCapture();
+                }
             }
         });
     }

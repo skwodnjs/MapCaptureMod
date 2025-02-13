@@ -1,8 +1,8 @@
 package jwn.mapcapturemod;
 
-import jwn.mapcapturemod.custom.KeyInputHandler;
-import jwn.mapcapturemod.custom.ModSounds;
-import jwn.mapcapturemod.custom.ScreenCapture;
+import jwn.mapcapturemod.mapcapture.KeyInputHandler;
+import jwn.mapcapturemod.mapcapture.ModSounds;
+import jwn.mapcapturemod.mapcapture.ScreenCapture;
 import net.fabricmc.api.ClientModInitializer;
 
 public class MapCaptureModClient implements ClientModInitializer {

@@ -1,6 +1,6 @@
 package jwn.mapcapturemod.mixin;
 
-import jwn.mapcapturemod.custom.LightToggleAccess;
+import jwn.mapcapturemod.mapcapture.LightToggleAccess;
 import net.minecraft.client.network.ClientPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 

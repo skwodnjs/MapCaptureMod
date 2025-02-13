@@ -1,0 +1,8 @@
+{
+  "key.category.map-capture-mod.control": "Map Capture Mod: control",
+  "key.map-capture-mod.map_capture": "Map Capture Key",
+
+  "message.map-capture-mod.full_screen_warning": "§cIt only works normally when it's full screen with a resolution of 1920x1080.",
+
+  "message.map-capture-mod.saved": "Screenshot saved!"
+}

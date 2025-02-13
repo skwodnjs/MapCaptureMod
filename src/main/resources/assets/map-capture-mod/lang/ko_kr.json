@@ -1,0 +1,8 @@
+{
+  "key.category.map-capture-mod.control": "Map Capture Mod: 조작",
+  "key.map-capture-mod.map_capture": "지도 캡쳐",
+
+  "message.map-capture-mod.full_screen_warning": "§c1920x1080 해상도의 전체화면에서만 캡쳐할 수 있습니다.",
+
+  "message.map-capture-mod.saved": "캡쳐 완료!"
+}

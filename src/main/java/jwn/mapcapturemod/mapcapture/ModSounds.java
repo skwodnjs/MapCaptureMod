@@ -1,4 +1,4 @@
-package jwn.mapcapturemod.custom;
+package jwn.mapcapturemod.mapcapture;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
