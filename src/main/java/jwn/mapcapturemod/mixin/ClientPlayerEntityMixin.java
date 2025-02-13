@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(ClientPlayerEntity.class)
 public class ClientPlayerEntityMixin implements LightToggleAccess {
-    public boolean lightToggle;
+    public boolean lightToggle = false;
 
     @Override
     public boolean isLightToggle() {

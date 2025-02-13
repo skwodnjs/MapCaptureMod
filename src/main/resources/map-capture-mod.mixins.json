@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"LightmapTextureManagerMixin",
-		"ClientPlayerEntityMixin"
+		"ClientPlayerEntityMixin",
+		"InGameHubMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
