@@ -5,12 +5,16 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.Items;
+import net.minecraft.item.map.MapDecoration;
+import net.minecraft.item.map.MapDecorationType;
+import net.minecraft.item.map.MapDecorationTypes;
+import net.minecraft.item.map.MapState;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.system.MemoryUtil;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -65,14 +69,18 @@ public class MapCapture {
 
     static void takeMapScreenshot() {
         MinecraftClient client = MinecraftClient.getInstance();
+        MapState mapState = FilledMapItem.getMapState(client.player.getMainHandStack(), client.world);
+        int scale = mapState.scale;
+        int range = 128 << scale;
+        int minX = ((int) ((client.player.getX() + 64) / range)) * range - 64;
+        int minZ = ((int) ((client.player.getZ() + 64) / range)) * range - 64;
 
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH;mm;ss").format(new Date());
-        String coordinate = String.format("%.2f,%.2f,%.2f",
-                client.player.getX(),
-                client.player.getY(),
-                client.player.getZ()
-        );
-        String file_name = timestamp + "_map(" + coordinate + ")";
+        String start_coordinate = String.format("%d,%d", minX, minZ);
+        String end_coordinate = String.format("%d,%d", minX + range, minZ + range);
+        System.out.println("from " + start_coordinate + " to " + end_coordinate);
+        String file_name = timestamp + "_map(" + start_coordinate + " ~ " + end_coordinate + ")";
+
         takePartialScreenshot(553, 176, 814, 814, file_name);
     }
 
