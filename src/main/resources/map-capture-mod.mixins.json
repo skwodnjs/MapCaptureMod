@@ -1,17 +1,17 @@
 {
-	"required": true,
-	"package": "jwn.mapcapturemod.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ClientPlayerEntityMixin",
-		"InGameHudMixin",
-		"LightmapTextureManagerMixin",
-		"MapRendererMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"client": [
-		"ToastManagerMixin"
-	]
+  "required": true,
+  "package": "jwn.mapcapturemod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ClientPlayerEntityMixin",
+    "InGameHudMixin",
+    "LightmapTextureManagerMixin",
+    "MapRendererMixin",
+    "KeyBindingMixin",
+    "MouseMixin",
+    "ToastManagerMixin"
+  ]
 }
