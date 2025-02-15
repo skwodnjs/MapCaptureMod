@@ -78,6 +78,12 @@ public class InGameHudMixin {
         }
     }
 
-    // 여기서 하는건 아니긴 한데 지도에 사람 표시된거 없애기
-
+    @Inject(method = "renderHeldItemTooltip", at = @At("HEAD"), cancellable = true)
+    private void removeHeldItemTooltip(DrawContext context, CallbackInfo ci) {
+        if (MinecraftClient.getInstance().player instanceof LightToggleAccess access) {
+            if (access.isLightToggle()) {
+                ci.cancel();
+            }
+        }
+    }
 }

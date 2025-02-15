@@ -3,12 +3,15 @@
 	"package": "jwn.mapcapturemod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"LightmapTextureManagerMixin",
 		"ClientPlayerEntityMixin",
 		"InGameHudMixin",
+		"LightmapTextureManagerMixin",
 		"MapRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	}
+	},
+	"client": [
+		"ToastManagerMixin"
+	]
 }
