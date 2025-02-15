@@ -7,8 +7,8 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 import static jwn.mapcapturemod.MapCaptureModClient.MOD_ID;
-import static jwn.mapcapturemod.mapcapture.ScreenCapture.getScreenshotDelay;
-import static jwn.mapcapturemod.mapcapture.ScreenCapture.mapCapture;
+import static jwn.mapcapturemod.mapcapture.MapCapture.getScreenshotDelay;
+import static jwn.mapcapturemod.mapcapture.MapCapture.mapCapture;
 
 
 public class KeyInputHandler {

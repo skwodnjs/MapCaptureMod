@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.item.Items;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryUtil;
@@ -20,11 +22,15 @@ import java.util.Date;
 
 import static java.lang.Math.min;
 
-public class ScreenCapture {
+public class MapCapture {
     private static int screenshotDelay = -1;
 
     static void mapCapture() {
         MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null) {
+            System.err.println("MinecraftClient.getInstance().player is null");
+            return;
+        }
         
         // 전체화면 확인
         if (!client.options.getFullscreen().getValue()) {
@@ -36,6 +42,12 @@ public class ScreenCapture {
         Framebuffer framebuffer = client.getFramebuffer();
         if (framebuffer.viewportWidth != 1920 || framebuffer.viewportHeight != 1080) {
             client.player.sendMessage(Text.translatable("message.map-capture-mod.full_screen_warning"), false);
+            return;
+        }
+
+        // 지도 들고있는지 확인
+        if (client.player.getStackInHand(Hand.MAIN_HAND).getItem() != Items.FILLED_MAP || client.player.getStackInHand(Hand.OFF_HAND).getItem() != Items.AIR) {
+            client.player.sendMessage(Text.translatable("message.map-capture-mod.inappropriate_item_in_hands"), false);
             return;
         }
         
@@ -98,7 +110,7 @@ public class ScreenCapture {
         }
 
         // 파일로 저장
-        File screenshotsDir = new File(client.runDirectory, "screenshots");
+        File screenshotsDir = new File(client.runDirectory, "screenshots/map");
         if (!screenshotsDir.exists()) screenshotsDir.mkdirs();
         File file = new File(screenshotsDir, file_name + ".png");
 
@@ -108,12 +120,10 @@ public class ScreenCapture {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        MemoryUtil.memFree(buffer); // 메모리 해제
     }
 
     public static void setScreenshotDelay(int screenshotDelay) {
-        ScreenCapture.screenshotDelay = screenshotDelay;
+        MapCapture.screenshotDelay = screenshotDelay;
     }
 
     public static int getScreenshotDelay() {
@@ -125,7 +135,7 @@ public class ScreenCapture {
             if (screenshotDelay > 0) {
                 screenshotDelay -= 1;
             } if (screenshotDelay == 0) {
-                ScreenCapture.takeMapScreenshot();
+                MapCapture.takeMapScreenshot();
                 screenshotDelay = -1;
                 if (client.player instanceof LightToggleAccess access) {
                     access.setLightToggle(false);
