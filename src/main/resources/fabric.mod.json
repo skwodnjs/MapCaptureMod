@@ -8,8 +8,8 @@
 		"JWN!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/skwodnjs/fabric-example-mod"
+		"homepage": "https://skwodnjs.github.io",
+		"sources": "https://github.com/skwodnjs/MapCaptureMod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/map-capture-mod/icon.png",
