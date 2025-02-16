@@ -2,15 +2,11 @@ package jwn.mapcapturemod.mapcapture;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.Framebuffer;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.Items;
-import net.minecraft.item.map.MapDecoration;
-import net.minecraft.item.map.MapDecorationType;
-import net.minecraft.item.map.MapDecorationTypes;
 import net.minecraft.item.map.MapState;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
@@ -18,7 +14,6 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 import javax.imageio.ImageIO;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -31,7 +26,7 @@ import static java.lang.Math.min;
 public class MapCapture {
     private static int screenshotDelay = -1;
 
-    static void mapCapture() {
+    static void mapCaptureStart() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) {
             System.err.println("MinecraftClient.getInstance().player is null");
@@ -71,7 +66,17 @@ public class MapCapture {
 
     static void takeMapScreenshot() {
         MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null) {
+            System.err.println("MinecraftClient.getInstance().player is null");
+            return;
+        }
+
         MapState mapState = FilledMapItem.getMapState(client.player.getMainHandStack(), client.world);
+        if (mapState == null) {
+            client.player.sendMessage(Text.translatable("message.map-capture-mod.capture_failed"), false);
+            return;
+        }
+
         int scale = mapState.scale;
         int range = 128 << scale;
         int minX = ((int) ((client.player.getX() + 64) / range)) * range - 64;

@@ -5,5 +5,6 @@
   "message.map-capture-mod.full_screen_warning": "§cIt only works normally when it's full screen with a resolution of 1920x1080.",
   "message.map-capture-mod.inappropriate_item_in_hands": "§cHold a filled map with your left hand empty.",
 
-  "message.map-capture-mod.saved": "Screenshot saved!"
+  "message.map-capture-mod.saved": "Screenshot saved!",
+  "message.map-capture-mod.capture_failed": "Screenshot failed."
 }

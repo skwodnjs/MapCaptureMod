@@ -5,5 +5,6 @@
   "message.map-capture-mod.full_screen_warning": "§c1920x1080 해상도의 전체화면에서만 캡쳐할 수 있습니다.",
   "message.map-capture-mod.inappropriate_item_in_hands": "§c왼손이 비어있는 상태에서 지도를 들고 있어야 합니다.",
 
-  "message.map-capture-mod.saved": "캡쳐 완료!"
+  "message.map-capture-mod.saved": "캡쳐 완료!",
+  "message.map-capture-mod.capture_failed": "캡쳐 실패."
 }

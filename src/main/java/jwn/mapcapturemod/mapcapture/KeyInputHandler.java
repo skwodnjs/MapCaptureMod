@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 
 import static jwn.mapcapturemod.MapCaptureModClient.MOD_ID;
 import static jwn.mapcapturemod.mapcapture.MapCapture.getScreenshotDelay;
-import static jwn.mapcapturemod.mapcapture.MapCapture.mapCapture;
+import static jwn.mapcapturemod.mapcapture.MapCapture.mapCaptureStart;
 
 
 public class KeyInputHandler {
@@ -21,7 +21,7 @@ public class KeyInputHandler {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (MapCaptureKey.wasPressed()) {
                 if (getScreenshotDelay() == -1) {
-                    mapCapture();
+                    mapCaptureStart();
                 }
             }
         });
